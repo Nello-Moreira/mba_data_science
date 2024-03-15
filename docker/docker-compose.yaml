@@ -12,3 +12,16 @@ services:
     # tty: true
     volumes:
       - ../src:/app/src
+
+  database:
+    container_name: sqlite
+    build:
+      context: ../
+      dockerfile: ./docker/db/Dockerfile.sqlite
+    ports:
+      - 1433:1433
+    init: true
+    stdin_open: true
+    tty: true
+    volumes:
+      - ../src/exercises/database/:/root/db/
